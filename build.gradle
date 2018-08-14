@@ -1,0 +1,46 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.nero'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    jacksonVersion = '2.9.5'
+    spockVersion = '1.1-groovy-2.4'
+}
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter')
+    compileOnly('org.projectlombok:lombok')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    // sprint-data-redis
+    compile('org.springframework.boot:spring-boot-starter-data-redis')
+    // jackson-databind
+    compile group: "com.fasterxml.jackson.core", name: "jackson-databind", version: "${jacksonVersion}"
+
+
+    testCompile "org.spockframework:spock-core:${spockVersion}"
+    testCompile "org.spockframework:spock-spring:${spockVersion}"
+    testCompile 'org.assertj:assertj-core:3.9.1'
+}
