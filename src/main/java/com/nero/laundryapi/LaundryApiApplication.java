@@ -9,4 +9,5 @@ public class LaundryApiApplication {
     public static void main(String[] args) {
         SpringApplication.run(LaundryApiApplication.class, args);
     }
+
 }
