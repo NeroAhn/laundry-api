@@ -1,30 +1,28 @@
 package com.nero.laundryapi.groovy
 
-import com.nero.laundryapi.model.Machine
-import com.nero.laundryapi.model.MachineStatus
-import com.nero.laundryapi.repository.MachineRedisRepository
+import com.nero.laundryapi.service.RedisService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
 
+@ContextConfiguration
+@SpringBootTest
 class MachineRedisTest extends Specification {
 
     @Autowired
-    private MachineRedisRepository machineRedisRepository
+    RedisService redisService
+
 
     def "Redis 등록/조회 테스트"() {
-//        given:
-//        def id = 1L
-//        Machine machine = new Machine()
-//        machine.setId(id)
-//        machine.setMachineStatus(MachineStatus.LAUNDRY)
-//        machine.setRemainingTime(60000)
-//
-//        when:
-//        machineRedisRepository.save(machine)
-//
-//        then:
-//        Machine savedMachine = machineRedisRepository.findById(id).get()
-//        savedMachine.getMachineStatus == MachineStatus.LAUNDRY
-//        savedMachine.getRemainingTime == 60000
+        given:
+        def key = "key:springboot"
+        def value = "hello"
+
+        when:
+        redisService.set(key, value)
+
+        then:
+        value == redisService.get(key)
     }
 }

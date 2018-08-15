@@ -26,6 +26,7 @@ repositories {
 ext {
     jacksonVersion = '2.9.5'
     spockVersion = '1.1-groovy-2.4'
+    jedisVersion = '2.9.0'
 }
 
 
@@ -36,9 +37,10 @@ dependencies {
 
     // sprint-data-redis
     compile('org.springframework.boot:spring-boot-starter-data-redis')
-    // jackson-databind
-    compile group: "com.fasterxml.jackson.core", name: "jackson-databind", version: "${jacksonVersion}"
-
+    // Jedis
+    compile group: 'redis.clients', name: 'jedis', version: "${jedisVersion}"
+    // Jackson
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: "${jacksonVersion}"
 
     testCompile "org.spockframework:spock-core:${spockVersion}"
     testCompile "org.spockframework:spock-spring:${spockVersion}"
