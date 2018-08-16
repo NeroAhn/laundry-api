@@ -27,11 +27,13 @@ ext {
     jacksonVersion = '2.9.5'
     spockVersion = '1.1-groovy-2.4'
     jedisVersion = '2.9.0'
+    swaggerVersion = '2.9.2'
 }
 
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframwork.boot:spring-boot-devtools')
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 
@@ -41,6 +43,9 @@ dependencies {
     compile group: 'redis.clients', name: 'jedis', version: "${jedisVersion}"
     // Jackson
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: "${jacksonVersion}"
+    // Swagger2
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: "${swaggerVersion}"
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: "${swaggerVersion}"
 
     testCompile "org.spockframework:spock-core:${spockVersion}"
     testCompile "org.spockframework:spock-spring:${spockVersion}"
