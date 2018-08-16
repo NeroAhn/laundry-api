@@ -1,5 +1,6 @@
 package com.nero.laundryapi.groovy
 
+import com.nero.laundryapi.model.Machine
 import com.nero.laundryapi.service.RedisMessagePublisher
 import com.nero.laundryapi.service.RedisMessageSubscriber
 import com.nero.laundryapi.service.RedisService
@@ -15,12 +16,6 @@ class MachineRedisTest extends Specification {
     @Autowired
     RedisService redisService
 
-    @Autowired
-    RedisMessagePublisher redisMessagePublisher
-
-    @Autowired
-    RedisMessageSubscriber redisMessageSubscriber
-
     def "Redis 등록/조회 테스트"() {
         given:
         def key = "key:springboot"
@@ -33,14 +28,14 @@ class MachineRedisTest extends Specification {
         value == redisService.get(key)
     }
 
-    def "Redis message publish 테스트"() {
+    def "Redis publish 테스트"() {
         given:
         def message = "message publish test " + UUID.randomUUID()
 
         when:
-        redisMessagePublisher.publish(message)
+        redisService.publish(message)
 
         then:
-        redisMessageSubscriber.messageList.get(0).contains(message)
+        redisService.isContains(message)
     }
 }

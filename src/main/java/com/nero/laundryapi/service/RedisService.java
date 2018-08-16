@@ -10,8 +10,16 @@ public class RedisService {
     @Autowired
     private final RedisTemplate redisTemplate;
 
-    public RedisService(RedisTemplate redisTemplate) {
+    @Autowired
+    private final RedisMessagePublisher redisMessagePublisher;
+
+    @Autowired
+    private final RedisMessageSubscriber redisMessageSubscriber;
+
+    public RedisService(RedisTemplate redisTemplate, RedisMessagePublisher redisMessagePublisher, RedisMessageSubscriber redisMessageSubscriber) {
         this.redisTemplate = redisTemplate;
+        this.redisMessagePublisher = redisMessagePublisher;
+        this.redisMessageSubscriber = redisMessageSubscriber;
     }
 
     public void set(String key, String value) {
@@ -20,5 +28,13 @@ public class RedisService {
 
     public Object get(String key) {
         return redisTemplate.opsForValue().get(key);
+    }
+
+    public void publish(String message) {
+        redisMessagePublisher.publish(message);
+    }
+
+    public boolean isContains(String message) {
+        return redisMessageSubscriber.messageList.get(0).contains(message);
     }
 }

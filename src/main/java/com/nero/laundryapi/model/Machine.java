@@ -16,6 +16,4 @@ public class Machine {
     // 남은 시간
     private Integer remainingTime;
 
-
-
 }

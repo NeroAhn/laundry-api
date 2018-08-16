@@ -3,7 +3,9 @@ package com.nero.laundryapi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RedisMessagePublisher implements MessagePublisher {
 
     @Autowired
@@ -21,7 +23,7 @@ public class RedisMessagePublisher implements MessagePublisher {
     }
 
     @Override
-    public void publish(String message) {
+    public void publish(Object message) {
         redisTemplate.convertAndSend(topic.getTopic(), message);
     }
 }
