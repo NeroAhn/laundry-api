@@ -1,8 +1,6 @@
 package com.nero.laundryapi.groovy
 
-import com.nero.laundryapi.model.Machine
-import com.nero.laundryapi.service.RedisMessagePublisher
-import com.nero.laundryapi.service.RedisMessageSubscriber
+
 import com.nero.laundryapi.service.RedisService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest

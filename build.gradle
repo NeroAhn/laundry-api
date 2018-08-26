@@ -37,7 +37,7 @@ dependencies {
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 
-    // sprint-data-redis
+    // spring-data-redis
     compile('org.springframework.boot:spring-boot-starter-data-redis')
     // Jedis
     compile group: 'redis.clients', name: 'jedis', version: "${jedisVersion}"

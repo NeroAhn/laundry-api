@@ -30,7 +30,7 @@ public class RedisService {
         return redisTemplate.opsForValue().get(key);
     }
 
-    public void publish(String message) {
+    public void publish(Object message) {
         redisMessagePublisher.publish(message);
     }
 

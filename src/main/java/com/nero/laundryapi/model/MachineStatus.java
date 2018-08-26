@@ -1,5 +1,8 @@
 package com.nero.laundryapi.model;
 
+import lombok.Getter;
+
+@Getter
 public enum MachineStatus {
     EMPTY,          // 빈상태
     LAUNDRY,        // 세탁
